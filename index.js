@@ -6,7 +6,7 @@ const loadNotes = () => {
   let savednotes = JSON.parse(localStorage.getItem("notes") || []);
   savednotes.forEach((element) => {
     loadel = createElement(element);
-    appbox.prepend(loadel);
+    appbox.append(loadel);
   });
 };
 // saveNotes to storage
@@ -42,7 +42,7 @@ addbtn.addEventListener("click", () => {
   clicksound.currentTime = 0;
   clicksound.play();
   let noteElement = createElement("");
-  appbox.prepend(noteElement);
+  appbox.append(noteElement);
   saveNotes();
 });
 
