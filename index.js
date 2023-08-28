@@ -1,9 +1,10 @@
 const addbtn = document.getElementById("addbtn");
 const appbox = document.getElementById("appbox");
 const clearbtn = document.getElementById("clearbtn");
+const clicksound = document.getElementById("clicksound");
 //load notes
 const loadNotes = () => {
-  let parsed = JSON.parse(localStorage.getItem("notes") || "[]"); //If localStorage Value is falsy (null or undefined) then the JSON.parse will try to parse the empty array provided as a string(as stringified earlier)
+  let parsed = JSON.parse(localStorage.getItem("notes") || "[]"); //If localStorage value is falsy (null or undefined) then the JSON.parse will try to parse the empty array provided as a string(as stringified earlier)
   console.log("I am parsed array", parsed);
   parsed.forEach((element) => {
     createElement(element);
@@ -39,6 +40,8 @@ const createElement = (content) => {
 
 // Add button
 addbtn.addEventListener("click", () => {
+  clicksound.currentTime = 0;
+  clicksound.play();
   let El = createElement("");
   saveNotes();
 });
